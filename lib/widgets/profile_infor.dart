@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/widgets/responsive_widget.dart';
+import 'package:portfolio/constants.dart';
 
 class ProfileInfo extends StatelessWidget {
   profileImage(context) => AnimatedContainer(
@@ -11,8 +12,6 @@ class ProfileInfo extends StatelessWidget {
             ? MediaQuery.of(context).size.height * 0.25
             : MediaQuery.of(context).size.width * 0.25,
         decoration: BoxDecoration(
-          backgroundBlendMode: BlendMode.luminosity,
-          color: Colors.deepOrange,
           shape: BoxShape.circle,
           image: DecorationImage(
             image: AssetImage("images/ashish.jpg"),
@@ -24,17 +23,18 @@ class ProfileInfo extends StatelessWidget {
 
   final profileData = Column(
     crossAxisAlignment: CrossAxisAlignment.start,
+  // mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
       Text(
         "Hi there ! My name is",
         textScaleFactor: 2,
-        style: TextStyle(color: Colors.orange),
+        style: TextStyle(color: primaryColor),
       ),
       Text(
         "Ashish\nPanjwani",
         textScaleFactor: 5,
         style: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -46,18 +46,24 @@ class ProfileInfo extends StatelessWidget {
         "I am a Freelance Developer in Mobile App Development (Android & Flutter).",
         softWrap: true,
         textScaleFactor: 1.5,
-        style: TextStyle(color: Colors.white70),
+        style: TextStyle(color: Colors.grey),
       ),
       SizedBox(
         height: 20,
       ),
       Row(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           RaisedButton(
             shape: StadiumBorder(),
-            child: Text('Resume'),
-            color: Colors.red,
+            child: Text(
+              'Resume',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            color: raisedButtonColor,
             onPressed: () {},
             padding: EdgeInsets.all(10),
           ),
@@ -66,10 +72,11 @@ class ProfileInfo extends StatelessWidget {
           ),
           OutlineButton(
             borderSide: BorderSide(
-              color: Colors.red,
+              color: raisedButtonColor,
+              width: 4.0,
             ),
             shape: StadiumBorder(),
-            child: Text('Say Hi!'),
+            child: Text('Say Hi !'),
             color: Colors.red,
             onPressed: () {},
             padding: EdgeInsets.all(10),
@@ -82,13 +89,17 @@ class ProfileInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveWidget(
       largeScreen: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           profileImage(context),
-          profileData,
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.1,
+          ),
+          Expanded(child: profileData),
         ],
       ),
+      
       smallScreen: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

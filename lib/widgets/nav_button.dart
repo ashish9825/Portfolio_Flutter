@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants.dart';
 
 class NavButton extends StatelessWidget {
   final text;
@@ -8,7 +9,7 @@ class NavButton extends StatelessWidget {
   const NavButton(
       {@required this.text,
       @required this.onPressed,
-      this.color = Colors.orange});
+      this.color = primaryColor});
 
   @override
   Widget build(BuildContext context) {

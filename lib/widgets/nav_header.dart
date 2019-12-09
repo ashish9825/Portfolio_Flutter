@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/about_page.dart';
 import 'package:portfolio/widgets/logo.dart';
 import 'package:portfolio/widgets/nav_button.dart';
 import 'package:portfolio/widgets/responsive_widget.dart';
@@ -20,7 +21,9 @@ class NavHeader extends StatelessWidget {
               children: <Widget>[
                 NavButton(
                   text: 'about',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, AboutPage.id);
+                  },
                 ),
                 NavButton(
                   text: 'work',

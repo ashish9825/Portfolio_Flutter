@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/about_page.dart';
 import 'package:portfolio/widgets/nav_button.dart';
 import 'package:portfolio/widgets/nav_header.dart';
 import 'package:portfolio/widgets/profile_infor.dart';
 import 'package:portfolio/widgets/responsive_widget.dart';
+import 'package:portfolio/widgets/social_info.dart';
 
 class ProfilePage extends StatelessWidget {
+  static String id = '/profile_screen';
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
       largeScreen: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white,
         ),
         drawer: ResponsiveWidget.isSmallScreen(context)
             ? Drawer(
@@ -21,7 +25,9 @@ class ProfilePage extends StatelessWidget {
                   children: <Widget>[
                     NavButton(
                       text: 'about',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, AboutPage.id);
+                      },
                     ),
                     NavButton(
                       text: 'work',
@@ -38,7 +44,10 @@ class ProfilePage extends StatelessWidget {
         body: SingleChildScrollView(
           child: AnimatedPadding(
             duration: Duration(seconds: 1),
-            padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.1),
+            padding: EdgeInsets.only(
+                left: MediaQuery.of(context).size.height * 0.1,
+                right: MediaQuery.of(context).size.height * 0.1,
+                bottom: MediaQuery.of(context).size.height * 0.1),
             child: ResponsiveWidget(
               largeScreen: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -51,7 +60,7 @@ class ProfilePage extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.2,
                   ),
-                  //SocialInfo(),
+                  SocialInfo(),
                 ],
               ),
             ),

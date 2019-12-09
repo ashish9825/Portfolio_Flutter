@@ -21,7 +21,7 @@ class APDot extends StatelessWidget {
           width: 8,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.orange,
+            color: Color(0xFFFF6666),
           ),
         )
       ],
